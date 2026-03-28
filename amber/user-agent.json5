@@ -39,7 +39,7 @@
       config: {
         username: "${config.matrix_username}",
         password: "${config.matrix_password}",
-        scopes: "default,rooms.create,rooms.join",
+        scopes: "default,safe,rooms.create,rooms.join",
       },
     },
     matrix_ingress: {
