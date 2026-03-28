@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  AMBER_CLI_IMAGE: ghcr.io/rdi-foundation/amber-cli:main@sha256:aa8dd60c8ee05952a12a979a1193b40553bfe2264eb7714f3e73f04c6cb227f2
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v5
+
+      - name: Validate Amber manifest
+        run: docker run --rm -v "$PWD":/work -w /work "${AMBER_CLI_IMAGE}" check amber/user-agent.json5
