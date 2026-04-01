@@ -6,8 +6,8 @@
     properties: {
       matrix_username: { type: "string" },
       matrix_password: { type: "string", secret: true },
-      model: { type: "string", default: "gpt-5.4-mini" },
-      model_reasoning_effort: { type: "string", default: "medium" },
+      model: { type: "string", default: "gpt-5.4" },
+      model_reasoning_effort: { type: "string", default: "low" },
       developer_instructions: { type: ["string", "null"] },
       config_toml: { type: ["string", "null"] },
       agents_md: { type: ["string", "null"] },
